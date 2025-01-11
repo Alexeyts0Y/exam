@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=SUSE:wght@100..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Times New Roman';
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: white;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+}
+
+header > a > img {
+    max-height: 70px;
+    object-fit: cover;
+}
+
+header img {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+}
+
+header div {
+    display: flex;
+    gap: 15px;
+}
+
+.logo {
+    width: auto;
+    height: auto;
+}
+
+.notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #7edaf7;
+    width: 100%;
+}
+
+.closeNotification {
+    background: none;
+    border: none;
+}
+
+.closeNotification img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-grow: 1;
+    padding: 20px 70px;
+}
+
+footer {
+    padding: 30px 30px;
+    border-top: 1px solid lightgray;
+}
+
+.items {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 280px 280px 280px 280px;
+    grid-template-rows: auto;
+    gap: 30px;
+}
+
+.itemCard {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: white;
+    padding: 20px 20px;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+}
+
+.itemCard button {
+    width: 100%;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    align-self: center;
+    transition: 0.2s all;
+}
+
+.itemCard button:hover {
+    background-color: rgb(204, 202, 202);
+}
+
+figure {
+    flex-grow: 1;
+    width: 100%;
+    height: 250px;
+}
+
+.itemCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.itemPriceAndDiscount {
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemCard button {
+    width: 100%;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    align-self: center;
+}
+
+.itemAttributes {
+    padding: 0 15px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.star {
+    color: #ccc;
+}
+  
+.star.active {
+    color: gold;
+}
+
+.itemRating {
+    display: flex;
+    gap: 10px;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: red;
+}
+
+.discount {
+    color: red;
+    font-weight: bold;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    gap: 10%;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form button {
+    padding: 5px 15px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    transition: 0.2s all;
+}
+
+form button:hover {
+    background-color: rgb(204, 202, 202);
+}
+
+form input {
+    padding: 5px 5px;
+    outline: none;
+    border: 1px solid rgb(124, 123, 123);
+    border-radius: 10px;
+}
+
+form select {
+    padding: 5px 5px;
+    outline: none;
+    border: 1px solid rgb(124, 123, 123);
+    border-radius: 10px;
+}
+
+textarea {
+    height: 60px;
+}
+
+.pricesAndBtns {
+    gap: 20px;
+}
+
+.pricesAndBtns p {
+    font-size: smaller;
+}
+
+.prices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all
+}
+
+.window {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.okayBtn {
+    transition: 0.2s all;
+    width: 125px;
+    outline: none;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.okayBtn:hover {
+    background-color: lightblue;
+}

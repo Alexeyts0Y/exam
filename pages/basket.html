@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/basket.css">
+    <title>Корзина</title>
+</head>
+<body>
+    <header>
+        <a href="../pages/index.html"><img class="logo" src="../img/icons/logo.png" alt="logo"></a>
+        <div>
+            <a href="../pages/index.html"><img src="../img/icons/list.png"></a>
+            <a href="../pages/profile.html"><img src="../img/icons/profile.png"></a>
+        </div>
+    </header>
+    <div class="notification">
+        <p class="message">Сообщение</p>
+        <button class="closeNotification"><img src="../img/icons/close.png"></button>
+    </div>
+    <main>
+        <section>
+            <h1>Корзина</h1>
+            <h3 class="nothingSelected">Ничего не выбрано. Выберите товары в <a href="../pages/index.html">каталоге</a></h3>
+            <div class="items"></div>
+        </section>
+        <section>
+            <h1>Оформление заказа</h1>
+            <form>
+                <div class="formLeftPart">
+                    <div>
+                        <label for="full_name">Имя</label>
+                        <input type="text" name="full_name" id="full_name" placeholder="Иванов Иван" required>
+                    </div>
+                    <div>
+                        <label for="phone">Номер телефона</label>
+                        <input type="tel" name="phone" id="phone" placeholder="+71234567891" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="example@example.com" required>
+                        <div>
+                            <input type="checkbox" name="subscribe" id="subscribe" checked>
+                            <label for="subscribe">Подписаться на рассылку</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="comment">Комментарий</label>
+                        <textarea name="comment" id="comment"></textarea>
+                    </div>
+                </div>
+                <div class="formRightPart">
+                    <div>
+                        <label for="delivery_address">Адрес доставки</label>
+                        <input type="text" name="delivery_address" id="delivery_address">
+                    </div>
+                    <div>
+                        <label for="delivery_date">Дата доставки</label>
+                        <input type="date" name="delivery_date" id="delivery_date">
+                    </div>
+                    <div>
+                        <label for="delivery_interval">Временной интервал доставки</label>
+                        <select name="delivery_interval" id="delivery_interval">
+                            <option value="08:00-12:00">08:00-12:00</option>
+                            <option value="12:00-14:00">12:00-14:00</option>
+                            <option value="14:00-18:00">14:00-18:00</option>
+                            <option value="18:00-22:00">18:00-22:00</option>
+                        </select>
+                    </div>
+                    <div class="pricesAndBtns">
+                        <div class="prices">
+                            <h3>Итоговая стоимость: <span class="totalPrice"></span></h3>
+                            <p>(стоимость доставки 500₽)</p>
+                        </div>
+                        <div class="buttons">
+                            <button type="reset" class="resetBtn">Сбросить</button>
+                            <button class="submitBtn">Оформить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <div class="modal" id="modal">
+        <div class="window" id="window">
+            <p class="text"></p>
+            <button class="okayBtn">Ок &#128076;</button>
+        </div>
+    </div>
+    <footer>
+        <p>&#169; 2025 Крутой Магаз. Все права защищены</p>
+    </footer>
+</body>
+<script type="module" src="../scripts/basket.js"></script>
+</html>

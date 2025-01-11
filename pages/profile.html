@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/profile.css">
+    <title>Личный кабинет</title>
+</head>
+<body>
+    <header>
+        <a href="../pages/index.html"><img class="logo" src="../img/icons/logo.png" alt="logo"></a>
+        <div>
+            <a href="../pages/index.html"><img src="../img/icons/list.png"></a>
+            <a href="../pages/basket.html"><img src="../img/icons/basket.png"></a>
+        </div>
+    </header>
+    <div class="notification">
+        <p class="message">Сообщение</p>
+        <button class="closeNotification"><img src="../img/icons/close.png"></button>
+    </div>
+    <main>
+        <div class="container">
+            <section>
+                <h2>История заказов</h2>
+                <div class="options">          
+                    <p class="number">№</p>
+                    <p class="date">Дата оформления</p>
+                    <p class="compound">Состав заказа</p>
+                    <p class="price">Стоимость</p>
+                    <p class="time">Доставка</p>
+                    <p class="actions">Действия</p>
+                </div>
+                <div class="ordersContainer"></div>
+            </section>
+        </div>
+    </main>
+    <div class="modal" id="modal">
+        <div class="window" id="window">
+            <div class="labelHead">
+                <h2></h2><button class="closeBtn">✖</button>
+            </div>
+            <div class="content" id="content"></div>
+            <div class="confirmDeleting" id="confirmDeleting"></div>
+            <form class="changeData" id="changeData"></form>
+            <div class="labelBottom">
+                <button class="okayBtn">ОК</button>
+                <button class="cancelBtn">Отмена</button>
+                <button class="saveBtn">Сохранить</button>
+                <button class="yesBtn">Да</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&#169; 2025 Крутой Магаз. Все права защищены</p>
+    </footer>
+</body>
+<script type="module" src="../scripts/profile.js"></script>
+</html>
