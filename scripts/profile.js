@@ -13,6 +13,18 @@ const cancelBtn = document.querySelector(".cancelBtn");
 const saveBtn = document.querySelector(".saveBtn");
 const yesBtn = document.querySelector(".yesBtn");
 
+function displayNotification(mode, text) {
+    const notification = document.querySelector(".notification");
+    const p = document.querySelector(".message");
+    if (mode == "success") {
+        notification.style.backgroundColor = "#7edaf7";
+    } else {
+        notification.style.backgroundColor = "red";
+    }
+    p.textContent = text;
+    notification.style.display = "flex";
+}
+
 function createElement(tag, classname) {
     let elem = document.createElement(tag);
     elem.className = classname;
@@ -323,18 +335,28 @@ saveBtn.onclick = async function() {
     });
 
     if (!response.ok) {
-        throw new Error("Error editing order");
+        const errMessage = await response.json().error;
+        displayNotification("fail", String(errMessage));
+        throw new Error(errMessage);
     } else {
         displayModal();
         displayAllOrders();
+        displayNotification("success", "Заказ успешно изменен!");
     }
 };
 
 yesBtn.onclick = async function () {
     const question = document.querySelector(".question");
-    await deleteOrder(question.dataset.orderid);
-    displayModal();
-    displayAllOrders();
+    const response = await deleteOrder(question.dataset.orderid);
+    if (!response.ok) {
+        const errMessage = await response.json().error;
+        displayNotification("fail", String(errMessage));
+        throw new Error(errMessage);
+    } else {
+        displayModal();
+        displayAllOrders();
+        displayNotification("success", "Заказ успешно изменен!");
+    }
 };
 
 const closeNotificationBtn = document.querySelector(".closeNotification");

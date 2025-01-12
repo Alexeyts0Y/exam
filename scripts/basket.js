@@ -104,7 +104,6 @@ for (let i = 0; i < localStorage.length; i++) {
 
 if (promises.length != 0) {
     Promise.all(promises).then(() => {
-        console.log("here");
         renderSelectedItems();
     });
 }
@@ -133,19 +132,23 @@ closeNotificationBtn.onclick = function() {
     closeNotificationBtn.parentElement.style.display = "none";
 };
 
-function displayModal(text) {
-    const window = document.getElementById("window");
-    const p = window.querySelector(".text");
-    
+function displayNotification(mode, text) {
+    const notification = document.querySelector(".notification");
+    const p = document.querySelector(".message");
+    if (mode == "success") {
+        notification.style.backgroundColor = "#7edaf7";
+    } else {
+        notification.style.backgroundColor = "red";
+    }
     p.textContent = text;
-    modal.className = "modal active";
+    notification.style.display = "flex";
 }
 
 document.querySelector("form").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     if (window.localStorage.length == 0) {
-        displayModal("Ничего не выбрано! Выберите товары в каталоге!");
+        displayNotification("fail", "Ничего не выбрано! Выберите товары в каталоге!");
         return;
     }
 
@@ -159,7 +162,6 @@ document.querySelector("form").addEventListener("submit", async function(e) {
     const formData = new FormData(this);
     const formObject = {};
     formData.forEach((value, key) => {
-        console.log(key);
         if (key == "subscribe") {
             formObject[key] = formData.get(key) == "on";
         } else if (key == "delivery_date") {
@@ -181,18 +183,14 @@ document.querySelector("form").addEventListener("submit", async function(e) {
     });
 
     if (!response.ok) {
-        throw new Error("Error creating order");
+        const errMessage = await response.json().error;
+        displayNotification("fail", String(errMessage));
+        throw new Error(errMessage);
     } else {
-        // itemsContainer.innerHTML = "";
         window.localStorage.clear();
         itemsData = [];
         renderSelectedItems();
         this.reset();
-        displayModal("Заказ успешно оформлен!");
+        displayNotification("success", "Заказ успешно оформлен!");
     }
 });
-
-const okayBtn = document.querySelector(".okayBtn");
-okayBtn.onclick = function() {
-    modal.className = "modal";
-};
