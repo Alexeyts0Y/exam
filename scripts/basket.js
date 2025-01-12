@@ -183,9 +183,9 @@ document.querySelector("form").addEventListener("submit", async function(e) {
     });
 
     if (!response.ok) {
-        const errMessage = await response.json().error;
-        displayNotification("fail", String(errMessage));
-        throw new Error(errMessage);
+        const errMessage = await response.json();
+        displayNotification("fail", String(errMessage.error));
+        throw new Error(errMessage.error);
     } else {
         window.localStorage.clear();
         itemsData = [];

@@ -335,9 +335,9 @@ saveBtn.onclick = async function() {
     });
 
     if (!response.ok) {
-        const errMessage = await response.json().error;
-        displayNotification("fail", String(errMessage));
-        throw new Error(errMessage);
+        const errMessage = await response.json();
+        displayNotification("fail", String(errMessage.error));
+        throw new Error(errMessage.error);
     } else {
         displayModal();
         displayAllOrders();
@@ -349,9 +349,9 @@ yesBtn.onclick = async function () {
     const question = document.querySelector(".question");
     const response = await deleteOrder(question.dataset.orderid);
     if (!response.ok) {
-        const errMessage = await response.json().error;
-        displayNotification("fail", String(errMessage));
-        throw new Error(errMessage);
+        const errMessage = await response.json();
+        displayNotification("fail", String(errMessage.error));
+        throw new Error(errMessage.error);
     } else {
         displayModal();
         displayAllOrders();
